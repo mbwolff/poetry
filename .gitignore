@@ -1,0 +1,5 @@
+# data files for Charles and Sylvia
+data/
+
+# env
+py_poetry/
