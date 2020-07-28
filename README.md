@@ -8,6 +8,8 @@ tim.vandecruys@irit.fr
 
 www.timvandecruys.be
 
+(modified by Mark Wolff for install on MacOS)
+
 
 ## Introduction
 
@@ -62,11 +64,10 @@ i was restless , eager to see something to eat
 
 `git clone https://github.com/timvdc/poetry.git`
 
-2) Create an anaconda (python3) environment with all the necessary
-dependencies; an environment description is included in the
-archive. The environment can be installed with the command:
+2) Create a virtual (python3) environment with all the necessary
+dependencies. The environment can be installed with the command:
 
-`conda env create -f environment.yml`
+`pip install -r requirements.txt`
 
 3) Put the required model files (not included) in directory `data`
 

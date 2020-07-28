@@ -2,4 +2,4 @@
 data/
 
 # env
-py_poetry/
+pyenv/
