@@ -46,6 +46,9 @@ class PoemBase:
                                'b','e','d','f','',
                                'e', 'g', 'f', 'h', '',
                                'g', 'a', 'h', 'c'),
+                               'flat':
+                               ('a', 'a', '', 'b', 'b', '',
+                                'c', 'c', '', 'd', 'd'),
                           }
 
         self.form = form
@@ -55,11 +58,11 @@ class PoemBase:
         self.loadNMFData()
 
         self.generator = VerseGenerator(self.MODEL_FILE, self.entropy_threshold)
-    
+
         self.loadVocabulary()
 
         self.ngramModel = kenlm.Model(self.NGRAM_FILE)
-        
+
         if not os.path.exists('log'):
             os.makedirs('log')
         logfile = 'log/poem_' + datetime.now().strftime("%Y%m%d")
@@ -70,12 +73,12 @@ class PoemBase:
 
         with open(config) as json_config_file:
             configData = json.load(json_config_file)
-        
+
         location = os.path.join(
             configData['general']['data_directory'],
             configData['general']['language']
         )
-            
+
         self.NMF_FILE = os.path.join(location, configData['nmf']['matrix_file'])
         self.NMF_DESCRIPTION_FILE = os.path.join(location, configData['nmf']['description_file'])
         self.RHYME_FREQ_FILE = os.path.join(location, configData['rhyme']['freq_file'])
@@ -83,7 +86,7 @@ class PoemBase:
         self.RHYME_INV_DICT_FILE = os.path.join(location, configData['rhyme']['rhyme_inv_dict_file'])
         self.MODEL_FILE = os.path.join(location, configData['model']['parameter_file'])
         self.NGRAM_FILE = os.path.join(location, configData['model']['ngram_file'])
-        
+
         self.name = configData['general']['name']
         self.length = configData['poem']['length']
         self.entropy_threshold = configData['poem']['entropy_threshold']
@@ -92,7 +95,7 @@ class PoemBase:
         self.W = np.load(self.NMF_FILE)
         with open(self.NMF_DESCRIPTION_FILE, 'rb') as f:
             self.nmf_descriptions = pickle.load(f, encoding='utf8')
-        
+
     def loadRhymeDictionary(self):
         freqRhyme = {}
         with codecs.open(self.RHYME_FREQ_FILE, 'r', encoding='utf8') as f:

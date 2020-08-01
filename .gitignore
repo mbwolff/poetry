@@ -6,3 +6,6 @@ pyenv/
 
 # source files
 src/
+
+# logs of generated poems
+log/

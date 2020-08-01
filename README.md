@@ -62,7 +62,7 @@ i was restless , eager to see something to eat
 1) Clone the git repository:
 
 
-`git clone https://github.com/timvdc/poetry.git`
+`git clone https://github.com/mbwolff/poetry.git`
 
 2) Create a virtual (python3) environment with all the necessary
 dependencies. The environment can be installed with the command:
